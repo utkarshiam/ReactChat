@@ -11,6 +11,9 @@ var db =fire.firestore();
 
 class existingGroups extends Component{
 
+  componentDidMount(){
+         remoteActions.setListenerOnAuthChange()
+    }
   render(){
     return(
       <Fragment>
@@ -18,13 +21,14 @@ class existingGroups extends Component{
             appStore.auth.isLoggedIn ?
               (
                 <Header1/>
+
               )
             :
 
                 (
                     <Link to='/'><h1> Let's Sign-in First</h1></Link>
                 )
-          
+
         }
 
 
