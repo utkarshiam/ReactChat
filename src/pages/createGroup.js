@@ -31,7 +31,7 @@ class createGroup extends Component {
             // doc.data() is never undefined for query doc snapshots
             var dId= doc.id
             var groupDict=doc.data().groups
-            groupDict[groupName]= groupId
+            groupDict[groupId]= groupName
 
             var washingtonRef = db.collection("users").doc(dId);
 
