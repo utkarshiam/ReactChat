@@ -27,7 +27,8 @@ const styles={
     M.AutoInit();
   }
   componentDidUpdate(){
-    M.AutoInit();
+    M.AutoInit()
+
   }
 cool(){
   M.AutoInit();
@@ -38,7 +39,7 @@ cool(){
         <div>
         <ul id="dropdown1" class="dropdown-content">
           <li><Link to='/createGroup'> Create Group</Link></li>
-          <li><Link to='/createGroup'>Existing Groups</Link></li>
+          <li><Link to='/existingGroups'>Existing Groups</Link></li>
           <li class="divider"></li>
           </ul>
           <nav>
