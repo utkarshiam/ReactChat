@@ -6,7 +6,7 @@ import appStore from '../store/appstore.js';
 import { observer } from 'mobx-react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import fire from '../scripts/fire.js';
-
+import randomstring from 'randomstring';
 var db =fire.firestore();
 class createGroup extends Component {
 
@@ -14,12 +14,13 @@ class createGroup extends Component {
     super(props)
     this.state={
       groupName:null,
-      group: []
+
     }
   }
   handleClick(){
     var groupName= this.state.groupName;
     console.log("chutiya" + groupName);
+    var groupId= randomstring.generate();
 
 
       db.collection("users").where("uid", "==", appStore.currentUser.uid)
@@ -29,12 +30,14 @@ class createGroup extends Component {
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             var dId= doc.id
+            var groupDict=doc.data().groups
+            groupDict[groupName]= groupId
 
             var washingtonRef = db.collection("users").doc(dId);
 
             // Set the "capital" field of the city 'DC'
           washingtonRef.update({
-                groups: ...groups,groupName
+                groups: groupDict
 
               });
         });

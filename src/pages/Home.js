@@ -25,7 +25,7 @@ checkAndRetrive(){
     name: appStore.currentUser.displayName,
     uid: appStore.currentUser.uid,
     email: appStore.currentUser.email,
-    groups: null
+    groups: {}
 })
 .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);
