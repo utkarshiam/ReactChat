@@ -67,15 +67,13 @@ class createGroup extends Component {
      console.error("Error adding document: ", error);
  });
 
-
+ this.setState({
+   groupName: ""
+ })
 
 }
 
-
-
-
-
-  componentDidMount(){
+componentDidMount(){
        remoteActions.setListenerOnAuthChange()
   }
   componentDidUpdate(){
@@ -103,7 +101,7 @@ class createGroup extends Component {
                             <form class="col s12">
                               <div class="row">
                                 <div class="input-field col s12">
-                                  <input id="email"  class="active" onChange={(e)=>{
+                                  <input value={this.state.groupName} id="email"  class="active" onChange={(e)=>{
                                     this.setState({
                                       groupName: e.target.value
                                     })
