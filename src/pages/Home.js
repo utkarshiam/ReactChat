@@ -45,7 +45,7 @@ checkAndRetrive(){
   })
 
 }
-cool(){}
+
     render(){
       return(
         <Fragment>

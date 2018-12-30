@@ -33,6 +33,7 @@ class createGroup extends Component {
             var groupDict=doc.data().groups
             groupDict[groupId]= groupName
 
+
             var washingtonRef = db.collection("users").doc(dId);
 
             // Set the "capital" field of the city 'DC'
@@ -45,7 +46,34 @@ class createGroup extends Component {
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
-    }
+
+
+
+
+       // doc.data() is never undefined for query doc snapshots
+
+
+   db.collection("groups").add({
+     gid: groupId,
+     name: groupName,
+     users: {
+       [appStore.currentUser.uid] : appStore.currentUser.displayName
+     }
+ })
+ .then(function(docRef) {
+     console.log("Document written with ID: ", docRef.id);
+ })
+ .catch(function(error) {
+     console.error("Error adding document: ", error);
+ });
+
+
+
+}
+
+
+
+
 
   componentDidMount(){
        remoteActions.setListenerOnAuthChange()
