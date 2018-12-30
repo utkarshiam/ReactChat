@@ -60,7 +60,7 @@ cool(){
 
                         <li>
 
-                          <img style={styles.profile} src={appStore.currentUser.photoURL}/>
+                          <img style={styles.profile} src={appStore.currentUser.photoURL} class="circle responsive-img"/>
                         </li>
                         <li><button className='btn green'>{appStore.currentUser.displayName}</button></li>
                       </Fragment>

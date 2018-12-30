@@ -4,10 +4,52 @@ import Header1 from '../components/Header1.js';
 import { Link } from 'react-router-dom';
 import appStore from '../store/appstore.js';
 import { observer } from 'mobx-react';
+import M from 'materialize-css/dist/js/materialize.min.js';
+import fire from '../scripts/fire.js';
+
+var db =fire.firestore();
 class createGroup extends Component {
+
+  constructor(props){
+    super(props)
+    this.state={
+      groupName:null,
+      group: []
+    }
+  }
+  handleClick(){
+    var groupName= this.state.groupName;
+    console.log("chutiya" + groupName);
+
+
+      db.collection("users").where("uid", "==", appStore.currentUser.uid)
+    .get()
+    .then(function(querySnapshot) {
+
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            var dId= doc.id
+
+            var washingtonRef = db.collection("users").doc(dId);
+
+            // Set the "capital" field of the city 'DC'
+          washingtonRef.update({
+                groups: ...groups,groupName
+
+              });
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+    }
 
   componentDidMount(){
        remoteActions.setListenerOnAuthChange()
+  }
+  componentDidUpdate(){
+    M.AutoInit();
+    M.updateTextFields();
   }
   render(){
     return(
@@ -20,7 +62,9 @@ class createGroup extends Component {
               <Fragment>
               <Header1/>
 
-                  <h1 align="center" >Create Group!</h1>
+
+                  <span class="white-text name"><h1>Create Group!</h1></span>
+
                   <br/>
                   <br/>
                   <br/>
@@ -28,13 +72,21 @@ class createGroup extends Component {
                             <form class="col s12">
                               <div class="row">
                                 <div class="input-field col s12">
-                                  <input id="email" type="email" class="validate"/>
-                                  <label for="email"><font color="green">Use your favourite Word</font></label>
+                                  <input id="email"  class="active" onChange={(e)=>{
+                                    this.setState({
+                                      groupName: e.target.value
+                                    })
+                                  }}/>
+                                  <label class="active"><font color="green">Use your favourite Word</font></label>
                                   <span class="helper-text " data-error="wrong" data-success="right"><font color="green">Group-Name</font></span>
                                 </div>
                               </div>
                             </form>
+                            <button class="btn waves-effect waves-light center-align" type="submit" name="action" onClick={()=>{this.handleClick()}}>Submit
+                            <i class="material-icons right">send</i>
+                          </button>
                           </div>
+
 
               </Fragment>
             )

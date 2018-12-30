@@ -52,7 +52,7 @@ const styles={
 
                         <li>
 
-                          <img style={styles.profile} src={appStore.currentUser.photoURL}/>
+                          <img style={styles.profile} src={appStore.currentUser.photoURL} class="circle responsive-img"/>
                         </li>
 
                       </Fragment>

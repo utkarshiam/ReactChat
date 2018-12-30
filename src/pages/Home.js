@@ -56,31 +56,31 @@ cool(){}
 
                 (
                   <Fragment>
+                  <br/><br/>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger btn">Click to view profile</a>
+                    <ul id="slide-out" class="sidenav">
+                      <li><div class="user-view">
+                        <div class="background">
+                          <img src="https://i.ytimg.com/vi/tsjd7xdgfjA/maxresdefault.jpg"/>
+                        </div>
+                        <a href="#user"><img class="circle" src={appStore.currentUser.photoURL}/></a>
+                        <a href="#name"><span class="white-text name">{appStore.currentUser.displayName}</span></a>
+                        <a href="#email"><span class="white-text email">{appStore.currentUser.email}</span></a>
+                      </div></li>
+                      <li>userID:- {appStore.currentUser.uid}</li>
+                      <br/><br/>
+                      <li><div class="divider"></div></li>
+                      <li><a class="sidenav-close green" href="#!">Clicking this will close Sidenav</a></li>
+                    </ul>
 
 
-                      <div className='row'>
-
-                          <div className="col s12 m6 l3">
-                            <div className="card blue-grey darken-1">
-                              <div className="card-content white-text">
-                                <span className="card-title">If you have logged in, ACCESS:</span>
-                                <ol>
-                                <li><Link to='/createGroup'> Create Group</Link></li>
-                                </ol>
                                 {
 
                                   this.checkAndRetrive()
 
 
                                 }
-                              </div>
-                            <div className="card-action">
 
-
-                          </div>
-                         </div>
-                        </div>
-                    </div>
                     {console.log(appStore.currentUser.photoURL)}
                     </Fragment>
 
