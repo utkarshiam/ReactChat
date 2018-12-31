@@ -8,6 +8,7 @@ import fire from '../scripts/fire.js';
 import firebase from 'firebase';
 var db =fire.firestore();
 var count=0;
+var t=Math.floor(Math.random() * 10000);
 class MsgPage extends Component{
   constructor(props){
     super(props)
@@ -52,7 +53,13 @@ handleClick(){
   console.log("hooo")
   var gid= this.props.match.params.groupId;
   var mid= firebase.firestore.FieldValue.serverTimestamp();
-  var msgDict={
+  if(this.state.newMessage ==="")
+  {
+    alert
+    ("You are too lazy to even write a message. What an asshole!!")
+  }
+else
+  {var msgDict={
     body : this.state.newMessage,
     mid,
     gid,
@@ -62,6 +69,7 @@ handleClick(){
 //THE adding message GROUP SHIT
 if(count===0)
 {
+
   db.collection("messages").add({
   body: msgDict.body,
   mid: msgDict.mid,
@@ -129,7 +137,7 @@ if(count===0)
 
 
 
-count=0;
+count=0;}
 
 }
 
@@ -170,7 +178,7 @@ render(){
                     this.handleClick();
                     this.state.messages.map((m, i)=>{
                     return(
-                      <div class="white"><pre key={i}><b>{m.body}</b> by<font color="green"> {m.uid} <b>AT</b> </font></pre></div>
+                      <div class="white"><pre key={i}><b>{m.body}</b> by<font color="green"> Random Guy </font></pre></div>
                     )
 
                   })
@@ -185,7 +193,7 @@ render(){
                 {
                   this.state.messages.map((m, i)=>{
                     return(
-                      <div class="white"><pre key={i}><b>{m.body}</b> by<font color="green"> {m.uid} <b>AT</b> </font></pre></div>
+                      <div class="white"><pre key={i}><b>{m.body}</b> by<font color="green"> Random guy {Math.floor(Math.random() * 10000)}    </font></pre></div>
                     )
                   })
                 }
