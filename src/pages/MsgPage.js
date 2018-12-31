@@ -18,11 +18,11 @@ class MsgPage extends Component{
 
   grouping(){
     var groupId= this.props.match.params.groupId;
-
+    console.log(groupId);
     db.collection("groups").where("gid", "==", groupId)
     .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+    .then((querySnapshot)=> {
+        querySnapshot.forEach((doc)=> {
             // doc.data() is never undefined for query doc snapshots
             this.setState({
               groupId: doc.data().gid,
@@ -45,7 +45,11 @@ render(){
             appStore.auth.isLoggedIn ?
             (
               <Fragment>
+              {
+                this.state.groupId? null : this.grouping()
+              }
                 <Header1/>
+                <div class="col s12 white"><h1>{this.state.groupName}</h1></div>
               </Fragment>
             )
              :
