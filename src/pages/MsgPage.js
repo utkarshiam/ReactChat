@@ -53,7 +53,7 @@ handleClick(){
   console.log("hooo")
   var gid= this.props.match.params.groupId;
   var mid= firebase.firestore.FieldValue.serverTimestamp();
-  if(this.state.newMessage ==="")
+  if(this.state.newMessage ==="" && count===0)
   {
     alert
     ("You are too lazy to even write a message. What an asshole!!")
@@ -171,7 +171,7 @@ render(){
                   </form>
                   <ul>
 
-                  <li><button class="btn waves-effect waves-light center-align" name="action"><Link to='/MsgPage/:groupId/AddPar'>Click to add users</Link></button></li>
+                  <li><Link to='/MsgPage/:groupId/AddPar'><button class="btn waves-effect waves-light center-align" name="action">Click to add users</button></Link></li>
                   &nbsp;
 
                   <li><button class="btn waves-effect waves-light center-align" name="action" onClick={()=>{
