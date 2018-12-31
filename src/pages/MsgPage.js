@@ -6,12 +6,37 @@ import { observer } from 'mobx-react';
 import Header1 from '../components/Header1';
 import fire from '../scripts/fire.js';
 
-var dB =fire.firestore();
+var db =fire.firestore();
 class MsgPage extends Component{
+  constructor(props){
+    super(props)
+    this.state={
+      groupId:null,
 
+    }
+  }
+
+  grouping(){
+    var groupId= this.props.match.params.groupId;
+
+    db.collection("groups").where("gid", "==", groupId)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            this.setState({
+              groupId: doc.data().gid
+            })
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+  }
 componentDidMount(){
   remoteActions.setListenerOnAuthChange();
 }
+
 render(){
   return(
       <Fragment>
