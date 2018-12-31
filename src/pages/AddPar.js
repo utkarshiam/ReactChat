@@ -54,15 +54,18 @@ render(){
                     {
                         <Fragment>
                           <button class="btn waves-effect waves-light center-align" onClick={()=>{this.kootah()}}> show peeps to add!</button>
+
+                          <ul>
                           {
 
 
                             this.state.Suarr.map((m, i)=>{
                               return(
-                                <div class="white"><pre key={i}><b>{m}</b></pre></div>
+                              <li>  <div class="white"><pre key={i}><b>{m}</b></pre></div></Link></li>
                               )
                             })
                           }
+                          </ul>
                         </Fragment>
                     }
                   </Fragment>
