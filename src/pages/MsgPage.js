@@ -171,7 +171,8 @@ render(){
                   </form>
                   <ul>
 
-
+                  <li><button class="btn waves-effect waves-light center-align" name="action"><Link to='/MsgPage/:groupId/AddPar'>Click to add users</Link></button></li>
+                  &nbsp;
 
                   <li><button class="btn waves-effect waves-light center-align" name="action" onClick={()=>{
                     count=1;
