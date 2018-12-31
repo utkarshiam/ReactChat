@@ -7,7 +7,7 @@ import Header1 from '../components/Header1';
 import fire from '../scripts/fire.js';
 import firebase from 'firebase';
 var db =fire.firestore();
-
+var count=0;
 class MsgPage extends Component{
   constructor(props){
     super(props)
@@ -60,7 +60,9 @@ handleClick(){
   }
 
 //THE adding message GROUP SHIT
-db.collection("messages").add({
+if(count===0)
+{
+  db.collection("messages").add({
   body: msgDict.body,
   mid: msgDict.mid,
   gid: msgDict.gid,
@@ -72,6 +74,7 @@ db.collection("messages").add({
 .catch(function(error) {
     console.error("Error adding messages ", error);
 });
+}
 
 //THE retrieving message GROUP SHIT
   db.collection("messages").where("gid", "==", gid).orderBy("mid")
@@ -86,7 +89,8 @@ db.collection("messages").add({
       });
 
       this.setState({
-        messages: arr
+        messages: arr,
+        newMessage: ""
       });
 
       console.log(this.state.messages)
@@ -95,14 +99,37 @@ db.collection("messages").add({
       console.log("Error getting documents: ", error);
   });
 
+  ///TESTINGGGGGGGGG
+
+  // db.collection("users").where("uid", "==", this.msgDict.uid)
+  // .get()
+  // .then((querySnapshot)=> {
+  //
+  //
+  //     querySnapshot.forEach((doc)=> {
+  //         // doc.data() is never undefined for query doc snapshots
+  //         var msggD= doc.data()
+  //         arr.push(msggD)
+  //     });
+  //
+  //     this.setState({
+  //       messages: arr,
+  //       newMessage: ""
+  //     });
+  //
+  //     console.log(this.state.messages)
+  // })
+  // .catch(function(error) {
+  //     console.log("Error getting documents: ", error);
+  // });
+  //
+  //
 
 
 
 
 
-
-
-
+count=0;
 
 }
 
@@ -134,10 +161,27 @@ render(){
                       </div>
                     </div>
                   </form>
+                  <ul>
 
-                  <button class="btn waves-effect waves-light center-align" type="submit" name="action" onClick={()=>{this.handleClick()}}>Submit
+
+
+                  <li><button class="btn waves-effect waves-light center-align" name="action" onClick={()=>{
+                    count=1;
+                    this.handleClick();
+                    this.state.messages.map((m, i)=>{
+                    return(
+                      <div class="white"><pre key={i}><b>{m.body}</b> by<font color="green"> {m.uid} <b>AT</b> </font></pre></div>
+                    )
+
+                  })
+                }}> Check previous messages<i class="material-icons right">send</i></button></li>&nbsp;
+
+
+
+
+                  <li><button class="btn waves-effect waves-light center-align" type="submit" name="action" onClick={()=>{this.handleClick()}}>Submit
                   <i class="material-icons right">send</i>
-                </button>
+                </button></li>
                 {
                   this.state.messages.map((m, i)=>{
                     return(
@@ -145,6 +189,7 @@ render(){
                     )
                   })
                 }
+                </ul>
                 </div>
               </Fragment>
             )
