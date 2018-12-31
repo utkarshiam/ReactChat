@@ -12,7 +12,7 @@ class MsgPage extends Component{
     super(props)
     this.state={
       groupId:null,
-
+      groupName: null
     }
   }
 
@@ -25,7 +25,8 @@ class MsgPage extends Component{
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             this.setState({
-              groupId: doc.data().gid
+              groupId: doc.data().gid,
+              groupName: doc.data().name
             })
         });
     })
