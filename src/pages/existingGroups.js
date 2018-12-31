@@ -61,7 +61,7 @@ class existingGroups extends Component{
                         var y= m[x]
                       }
                       return(
-                      <li class="collection-item white"><p key={i}><Link to={"/groups" + x}>  {y}</Link> </p></li>
+                      <li class="collection-item white"><p key={i}><Link to={"/MsgPage/" + x}>  {y}</Link> </p></li>
           )
         })
       }
