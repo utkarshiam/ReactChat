@@ -41,6 +41,20 @@ kootah(){
     console.log("Error getting documents: ", error);
 });
 }
+
+DamnIt(){
+  console.log("cool")
+
+
+
+
+
+
+
+
+
+
+}
 render(){
   return(
 
@@ -61,7 +75,7 @@ render(){
 
                             this.state.Suarr.map((m, i)=>{
                               return(
-                              <li>  <div class="white"><pre key={i}><b>{m}</b></pre></div></Link></li>
+                              <li><a onClick={()=>{this.DamnIt()}}>  <div class="white"><pre key={i}><b>{m}</b></pre></div></a></li>
                               )
                             })
                           }
