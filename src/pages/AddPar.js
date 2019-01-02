@@ -99,7 +99,7 @@ render(){
 
                               return(
 
-                              <li><Link to={"/MsgPage/:groupId/AddPar/UserAdd" + x}>  <div class="white"><pre key={i}><b>{y}</b></pre></div></Link></li>
+                              <li><Link to={"/MsgPage/:groupId/AddPar/UserAdd/" + x}>  <div class="white"><pre key={i}><b>{y}</b></pre></div></Link></li>
                             )
                             })
                           }
