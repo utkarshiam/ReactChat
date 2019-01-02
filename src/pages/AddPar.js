@@ -29,6 +29,7 @@ kootah(){
   var arr=[]
   var arrId=[]
   var finalArr=[]
+  var lamba=0
 
     querySnapshot.forEach((doc)=> {
         // doc.data() is never undefined for query doc snapshots
@@ -43,13 +44,22 @@ kootah(){
     var idset=new Set(arrId)
     var newarr=Array.from(s)//name
     var newIdArr= Array.from(idset)//id
-    var r = {}
+
+    var result =  newarr.reduce((result, field, index)=> {
+      lamba=lamba+1;
+      result[newIdArr[index]] = field;
+      var key=newIdArr[index]
+      var value= field
+      var dict={
+        [newIdArr[index]]: value
+      }
+      console.log(key)
+        finalArr.push(dict)
+        // finalArr.push({result})
 
 
-    for (var i = 0; i < newIdArr.length; i++) {
-        r[newIdArr[i]] = newarr[i];
-        finalArr.push(r[newIdArr[i]])
-    }
+      return result;
+    }, {})
 
     console.log(finalArr)
     this.setState({
@@ -82,9 +92,15 @@ render(){
 
 
                             this.state.Suarr.map((m, i)=>{
+                              for(var x in m){
+                                var y= m[x]
+                                console.log(x)
+                              }
+
                               return(
-                              <li><Link to="/MsgPage/:groupId/AddPar/UserAdd">  <div class="white"><pre key={i}><b>{m}</b></pre></div></Link></li>
-                              )
+
+                              <li><Link to={"/MsgPage/:groupId/AddPar/UserAdd" + x}>  <div class="white"><pre key={i}><b>{y}</b></pre></div></Link></li>
+                            )
                             })
                           }
                           </ul>
