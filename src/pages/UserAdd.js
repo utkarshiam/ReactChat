@@ -14,29 +14,30 @@ class UserAdd extends Component{
     super(props)
     this.state=({
       //add shit
-      uid:null
+      uid:null,
+      name:null,
     })
   }
   grouping(){
     var uid= this.props.match.params.uid;
     console.log(uid);
 
-    //IDHAR MID KA PRAYOG HUA
-    // db.collection("groups").where("gid", "==", groupId)
-    // .get()
-    // .then((querySnapshot)=> {
-    //     querySnapshot.forEach((doc)=> {
-    //         // doc.data() is never undefined for query doc snapshots
-    //         this.setState({
-    //           groupId: doc.data().gid,
-    //           groupName: doc.data().name,
-    //           type:""
-    //         })
-    //     });
-    // })
-    // .catch(function(error) {
-    //     console.log("Error getting documents: ", error);
-    // });
+
+    db.collection("users").where("uid", "==", uid)
+    .get()
+    .then((querySnapshot)=> {
+        querySnapshot.forEach((doc)=> {
+            // doc.data() is never undefined for query doc snapshots
+            this.setState({
+              uid: doc.data().uid,
+              name: doc.data().name,
+
+            })
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
   }
 
   componentDidMount(){
@@ -51,16 +52,15 @@ render(){
       {
           appStore.auth.isLoggedIn ?
           (
-            <Fragment>
-              <Header1/>
-              {
+
                   <Fragment>
                       {
-                        this.state.groupId? null : this.grouping()
+                        this.state.uid? null : this.grouping()
+
                       }
+                      <Header1/>
                   </Fragment>
-              }
-            </Fragment>
+
 
           )
             :
