@@ -39,7 +39,11 @@ class UserAdd extends Component{
         console.log("Error getting documents: ", error);
     });
   }
+kootah(){
+  
 
+
+}
   componentDidMount(){
          remoteActions.setListenerOnAuthChange()
     }
@@ -59,6 +63,9 @@ render(){
 
                       }
                       <Header1/>
+                      <div class="col s12 white"><h5>Really???? This guy? Your choice SENPAI!</h5></div>
+                      &nbsp;
+                      <button class="btn waves-effect waves-light center-align" type="submit" name="action" onClick={()=>{this.kootah()}}> add {this.state.name} </button>
                   </Fragment>
 
 
