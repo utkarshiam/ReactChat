@@ -4,6 +4,7 @@ import createGroup from './pages/createGroup.js';
 import existingGroups from './pages/existingGroups.js';
 import MsgPage from './pages/MsgPage.js';
 import AddPar from './pages/AddPar.js';
+import UserAdd from './pages/UserAdd.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import './index.css';
@@ -18,6 +19,7 @@ class App extends Component {
           <Route exact path='/existingGroups' component={existingGroups}/>
           <Route exact path='/MsgPage/:groupId' component={MsgPage}/>
           <Route exact path='/MsgPage/:groupId/AddPar' component={AddPar}/>
+          <Route exact path='/MsgPage/:groupId/AddPar/UserAdd' component={UserAdd}/>
         </div>
       </Router>
       </div>

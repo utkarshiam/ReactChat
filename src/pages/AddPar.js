@@ -13,48 +13,56 @@ class AddPar extends Component{
   constructor(props){
     super(props)
     this.state=({
-      Suarr:[]
+      Suarr:[],
+      groupId:null,
+      groupName: null,
     })
   }
 
+  componentDidMount(){
+         remoteActions.setListenerOnAuthChange()
+    }
 kootah(){
   db.collection("users")
 .get()
 .then((querySnapshot)=> {
   var arr=[]
+  var arrId=[]
+  var finalArr=[]
 
     querySnapshot.forEach((doc)=> {
         // doc.data() is never undefined for query doc snapshots
 
         var groupDict=doc.data().name
+        var idDict=doc.data().uid
         arr.push(groupDict)
-
+        arrId.push(idDict)
     });
     var s = new Set(arr)
-    var newarr=Array.from(s)
+    console.log(arr,s)
+    var idset=new Set(arrId)
+    var newarr=Array.from(s)//name
+    var newIdArr= Array.from(idset)//id
+    var r = {}
+
+
+    for (var i = 0; i < newIdArr.length; i++) {
+        r[newIdArr[i]] = newarr[i];
+        finalArr.push(r[newIdArr[i]])
+    }
+
+    console.log(finalArr)
     this.setState({
-      Suarr: newarr
+      Suarr: finalArr
     });
-    console.log(this.state.Suarr)
+
 })
 .catch(function(error) {
     console.log("Error getting documents: ", error);
 });
 }
 
-DamnIt(){
-  console.log("cool")
 
-
-
-
-
-
-
-
-
-
-}
 render(){
   return(
 
@@ -75,7 +83,7 @@ render(){
 
                             this.state.Suarr.map((m, i)=>{
                               return(
-                              <li><a onClick={()=>{this.DamnIt()}}>  <div class="white"><pre key={i}><b>{m}</b></pre></div></a></li>
+                              <li><Link to="/MsgPage/:groupId/AddPar/UserAdd">  <div class="white"><pre key={i}><b>{m}</b></pre></div></Link></li>
                               )
                             })
                           }
