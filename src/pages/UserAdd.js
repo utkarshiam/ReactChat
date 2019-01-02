@@ -16,11 +16,14 @@ class UserAdd extends Component{
       //add shit
       uid:null,
       name:null,
+      groupId:null
     })
   }
+
   grouping(){
     var uid= this.props.match.params.uid;
-    console.log(uid);
+    var groupId= this.props.match.params.groupId;
+    console.log(groupId);
 
 
     db.collection("users").where("uid", "==", uid)
@@ -40,7 +43,21 @@ class UserAdd extends Component{
     });
   }
 kootah(){
-  
+  // db.collection("groups").where("uid", "==", uid)
+  // .get()
+  // .then((querySnapshot)=> {
+  //     querySnapshot.forEach((doc)=> {
+  //         // doc.data() is never undefined for query doc snapshots
+  //         this.setState({
+  //           uid: doc.data().uid,
+  //           name: doc.data().name,
+  //
+  //         })
+  //     });
+  // })
+  // .catch(function(error) {
+  //     console.log("Error getting documents: ", error);
+  // });
 
 
 }

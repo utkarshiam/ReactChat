@@ -19,7 +19,7 @@ class App extends Component {
           <Route exact path='/existingGroups' component={existingGroups}/>
           <Route exact path='/MsgPage/:groupId' component={MsgPage}/>
           <Route exact path='/MsgPage/:groupId/AddPar' component={AddPar}/>
-          <Route exact path='/UserAdd/:uid' component={UserAdd}/>
+          <Route exact path='/MsgPage/:groupId/AddPar/UserAdd/:uid' component={UserAdd}/>
         </div>
       </Router>
       </div>

@@ -74,6 +74,7 @@ kootah(){
 
 
 render(){
+var gid=this.props.match.params.groupId;
   return(
 
           <Fragment>
@@ -99,7 +100,7 @@ render(){
 
                               return(
 
-                              <li><Link to={"/UserAdd/" + x}>  <div class="white"><pre key={i}><b>{y}</b></pre></div></Link></li>
+                              <li><Link to={"/MsgPage/"+gid+"/AddPar/UserAdd/" + x}>  <div class="white"><pre key={i}><b>{y}</b></pre></div></Link></li>
                             )
                             })
                           }

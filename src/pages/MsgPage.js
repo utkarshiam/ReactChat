@@ -142,6 +142,7 @@ count=0;}
 }
 
 render(){
+var gid=this.props.match.params.groupId;
   return(
       <Fragment>
         {
@@ -171,7 +172,7 @@ render(){
                   </form>
                   <ul>
 
-                  <li><Link to='/MsgPage/:groupId/AddPar'><button class="btn waves-effect waves-light center-align" name="action">Click to add users</button></Link></li>
+                  <li><Link to={'/MsgPage/'+ gid+ "/AddPar"} ><button class="btn waves-effect waves-light center-align" name="action">Click to add users</button></Link></li>
                   &nbsp;
 
                   <li><button class="btn waves-effect waves-light center-align" name="action" onClick={()=>{
