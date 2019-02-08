@@ -44,7 +44,7 @@ cool(){
           </ul>
           <nav>
               <div class="nav-wrapper grey lighten-5">
-                <a href="#" class="brand-logo"><font color="green">Talk It Out Guys!</font></a>
+                <a href="#" class="brand-logo"><font color="green">RuDoc</font></a>
                 <ul  class="right">
                   {
                     appStore.auth.isLoggedIn?

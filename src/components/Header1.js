@@ -36,7 +36,7 @@ const styles={
         <div>
           <nav>
               <div class="nav-wrapper grey lighten-5">
-                <a href="#" class="brand-logo"><font color="green">Talk It Out Guys!</font></a>
+                <a href="#" class="brand-logo"><font color="green">RuDoc!</font></a>
                 <ul id="nav-mobile" class="right">
                   {
 

@@ -2,12 +2,12 @@ import firebase from 'firebase';
 //<script>
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyCcDUEIrnqahOOV0THtpwnX-jH0YwiJmME",
-    authDomain: "whatsapplookalike.firebaseapp.com",
-    databaseURL: "https://whatsapplookalike.firebaseio.com",
-    projectId: "whatsapplookalike",
-    storageBucket: "whatsapplookalike.appspot.com",
-    messagingSenderId: "547860398850"
+    apiKey: "AIzaSyCit0BN_gLw07kcQSO2wtr_nXoH7S4ju3M",
+    authDomain: "rudoc-5ecbd.firebaseapp.com",
+    databaseURL: "https://rudoc-5ecbd.firebaseio.com",
+    projectId: "rudoc-5ecbd",
+    storageBucket: "rudoc-5ecbd.appspot.com",
+    messagingSenderId: "500423263056"
   };
   var fire=firebase.initializeApp(config);
   var firestore = fire.firestore();
