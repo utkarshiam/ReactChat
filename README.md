@@ -4,7 +4,7 @@ a) socket io + express
 b) Simple firebase server
 3.) The project uses firestore. Need collaboration to write postgresql queries!!!
 
-drop  mail at : WEIRDLEMON@gmail.com
+drop  mail at : utkarshdevop@gmail.com
 ## Available Scripts
 
 In the project directory, you can run:
