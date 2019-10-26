@@ -1,7 +1,8 @@
+Brief description:
 1.) This project Uses Webpack and react both as two different builds.
 2.) The project has two servers:
-a) socket io + express
-b) Simple firebase server
+  a) socket io + express
+  b) Simple firebase server
 3.) The project uses firestore. Need collaboration to write postgresql queries!
 
 drop  mail at : utkarshdevop@gmail.com
