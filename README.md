@@ -2,7 +2,7 @@
 2.) The project has two servers:
 a) socket io + express
 b) Simple firebase server
-3.) The project uses firestore. Need collaboration to write postgresql queries!!!
+3.) The project uses firestore. Need collaboration to write postgresql queries!
 
 drop  mail at : utkarshdevop@gmail.com
 ## Available Scripts
